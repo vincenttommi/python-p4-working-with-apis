@@ -11,11 +11,11 @@ class GetPrograms:
   
   def get_programs():
     # we use the JSON library to parse the API response into nicely formatted JSON
-     URL = "http://data.cityofnewyork.us/resource/uvks-tn5n.json"
+    URL = "http://data.cityofnewyork.us/resource/uvks-tn5n.json"
+      
      
-     
-     response  = requests.get(URL)
-     return response.content
+    response  = requests.get(URL)
+    return response.content
    
    
    
@@ -23,21 +23,20 @@ class GetPrograms:
   def  program_school(self):
     
     programs_list = []
-    # creating an empty list that will receive data
-    programs = json.loads(self.get_programs())
-    # declaring a avaribale  programs  that receives data when  json loads data from get_pograms function
+    programs =(self.get_programs())
     for program in programs:
       #introducing a loop that iterates over the variable programs and that  using append method to append it to program list
-      programs_list.append(program(["agency"]))
+      # programs_list.append(program["agency"])
+      programs_list.append(program["agency"])
       
-      return programs_list
+    return programs_list
     #returning program_list to give out an output
     
-    programs = GetPrograms()
-    programs_schools  = programs.program_school() 
+programs = GetPrograms()
+programs_schools=programs.program_school()
     
-    for school  in set(programs_schools):
-      print(school)
+for school  in set(programs_schools):
+  print(school)
 
 
     
